@@ -7,90 +7,890 @@ const pictureChoice = (id, prompt, pictures, answer, explanation) => ({ id, type
 const labelledPictures = (prefix, labels) => labels.map((label) => ({ value: label, image: `${IMG}${prefix}-${label}.png` }));
 
 const sections = [
-  { key: "A", label: "A", title: "Match the sentences to the pictures.", note: "Choose the picture label that matches each sentence. The letters a-d are picture labels only.", points: 4, questions: [
-    pictureChoice("A1", "1. The timpani is loud.", labelledPictures("a", ["a", "b", "c", "d"]), "d", "Picture d shows the timpani, a set of large orchestral drums."),
-    pictureChoice("A2", "2. I want to play the bassoon.", labelledPictures("a", ["a", "b", "c", "d"]), "c", "Picture c shows the bassoon, a long woodwind instrument."),
-    pictureChoice("A3", "3. I love the sound of the trombone.", labelledPictures("a", ["a", "b", "c", "d"]), "b", "Picture b shows the trombone with its long slide."),
-    pictureChoice("A4", "4. He's holding a baton.", labelledPictures("a", ["a", "b", "c", "d"]), "a", "Picture a shows a conductor's baton.")
-  ]},
-  { key: "B", label: "B", title: "Complete the sentences.", note: "Write the word that completes each sentence.", points: 4, questions: [
-    input("B1", "1. A ___ is a large string instrument that you play with a bow.", ["cello"], "A cello is a large string instrument played with a bow."),
-    input("B2", "2. An ___ travels into space.", ["astronaut"], "An astronaut is a person who travels into space."),
-    input("B3", "3. A ___ studies science and carries out experiments.", ["scientist"], "A scientist studies scientific questions and conducts experiments."),
-    input("B4", "4. We exercise and play sports in the ___.", ["gym", "gymnasium"], "A gym is a place where people exercise or play indoor sports.")
-  ]},
-  { key: "C", label: "C", title: "Unscramble the words and match.", note: "Write each job, then choose its definition label. The letters a-c are definition labels only.", points: 6, wordBank: ["a. the leader of a band or orchestra", "b. a person who takes care of bees", "c. a person who trains animals for shows"], questions: [
-    { id: "C1", type: "paired", prompt: "1. e e b k e p e r", points: 2, parts: [
-      { key: "word", label: "Unscrambled word", type: "input", answers: ["beekeeper", "bee keeper"], explanation: "Beekeeper is the correct word." },
-      { key: "match", label: "Definition label", type: "choice", options: ["a", "b", "c"], answers: ["b"], explanation: "A beekeeper takes care of bees, so the definition label is b." }
-    ]},
-    { id: "C2", type: "paired", prompt: "2. c i r c u s  t r a i n e r", points: 2, parts: [
-      { key: "word", label: "Unscrambled word", type: "input", answers: ["circus trainer", "circus-trainer"], explanation: "Circus trainer is the correct job expression." },
-      { key: "match", label: "Definition label", type: "choice", options: ["a", "b", "c"], answers: ["c"], explanation: "A circus trainer trains animals for shows, so the definition label is c." }
-    ]},
-    { id: "C3", type: "paired", prompt: "3. c o n d u c t o r", points: 2, parts: [
-      { key: "word", label: "Unscrambled word", type: "input", answers: ["conductor"], explanation: "Conductor is the correct word." },
-      { key: "match", label: "Definition label", type: "choice", options: ["a", "b", "c"], answers: ["a"], explanation: "A conductor leads an orchestra or musical group, so the definition label is a." }
-    ]}
-  ]},
-  { key: "D", label: "D", title: "Listen. Then circle the correct answer.", note: "Listen carefully for the comparison in each sentence.", points: 4, audio: "assets/audio-d.mp3", questions: [
-    choice("D1", "1.", ["I prefer the orchestra.", "I prefer the band."], "I prefer the orchestra.", "The speaker says, “I prefer the orchestra.”"),
-    choice("D2", "2.", ["The cello is quieter.", "The cello is louder."], "The cello is quieter.", "The comparison in the recording is quieter."),
-    choice("D3", "3.", ["Lillian has the highest voice.", "Lillian has the lowest voice."], "Lillian has the highest voice.", "The recording says that no student has a higher voice than Lillian, so hers is the highest."),
-    choice("D4", "4.", ["Rachel thinks the trombone is harder.", "Rachel thinks the trombone is easier."], "Rachel thinks the trombone is harder.", "Rachel describes the trombone as the harder instrument.")
-  ]},
-  { key: "E", label: "E", title: "Look and complete the sentences.", note: "Use the picture to write the correct comparative or superlative form.", points: 3, questions: [
-    input("E1", "1. Juan is ___ the conductor.", ["taller than"], "Juan is taller than the conductor, so use the comparative form taller than.", IMG + "e-1.png"),
-    input("E2", "2. Monica is ___ person in the orchestra.", ["the shortest"], "Monica is compared with everyone in the orchestra, so use the superlative form the shortest.", IMG + "e-2.png"),
-    input("E3", "3. Ling is ___ student in the class.", ["the smartest"], "Ling has the highest result in the picture, so she is the smartest student in the class.", IMG + "e-3.png")
-  ]},
-  { key: "F", label: "F", title: "Complete the sentences.", note: "Use the correct comparative or superlative form of the word in parentheses.", points: 4, questions: [
-    input("F1", "1. The tuba is ___ the trumpet. (big)", ["bigger than"], "The comparative form of big is bigger, followed by than."),
-    input("F2", "2. That was ___ concert of the year. (amazing)", ["the most amazing"], "For a long adjective such as amazing, use the most to make the superlative."),
-    input("F3", "3. The drums are ___ the flute. (loud)", ["louder than"], "The comparative form of loud is louder, followed by than."),
-    input("F4", "4. His voice is ___ mine. (low)", ["lower than"], "The comparative form of low is lower, followed by than.")
-  ]},
-  { key: "G", label: "G", title: "Listen. Then circle True or False.", note: "Listen to each statement and decide whether it is true or false.", points: 4, audio: "assets/audio-g.mp3", questions: [
-    choice("G1", "1.", ["T", "F"], "F", "Statement 1 is false according to the recording."),
-    choice("G2", "2.", ["T", "F"], "T", "Statement 2 is true according to the recording."),
-    choice("G3", "3.", ["T", "F"], "F", "Statement 3 is false according to the recording."),
-    choice("G4", "4.", ["T", "F"], "T", "Statement 4 is true according to the recording.")
-  ]},
-  { key: "H", label: "H", title: "Complete the sentences.", note: "Write the music word that completes each meaning.", points: 5, questions: [
-    input("H1", "1. Music that has been played for many years is ___ music.", ["traditional"], "Traditional music belongs to the customs and history of a community."),
-    input("H2", "2. ___ are pipes of different lengths tied together and played by blowing across them.", ["panpipes", "pan pipes"], "Panpipes are made from several pipes of different lengths."),
-    input("H3", "3. A ___ is a West African drum played with the hands.", ["djembe"], "A djembe is a hand-played drum from West Africa."),
-    input("H4", "4. Wood, metal, and plastic are different kinds of ___.", ["material", "materials"], "Material means the substance that an object is made from; materials is also natural in this sentence."),
-    input("H5", "5. When something moves quickly from side to side, it begins to ___.", ["vibrate"], "To vibrate means to move quickly backwards and forwards or from side to side.")
-  ]},
-  { key: "I", label: "I", title: "Complete the sentences and match them to the pictures.", note: "Write an instrument, then choose its picture label. The letters a-c are picture labels only.", points: 6, questions: [
-    { id: "I1", type: "pictureWord", prompt: "1. It is made of wood and you blow into it.", pictures: labelledPictures("i", ["a", "b", "c"]), points: 2, parts: [
-      { key: "picture", label: "Picture label", type: "pictureChoice", answers: ["a", "b"], explanation: "The official answer is picture a for flute. A clarinet in picture b also fits the general description, so both are accepted when paired with the correct instrument word." },
-      { key: "word", label: "Instrument", type: "input", answers: ["flute", "clarinet"], explanation: "The official answer is flute. Clarinet is also scientifically valid because it is a woodwind instrument that is played by blowing, so it is accepted too." }
-    ]},
-    { id: "I2", type: "pictureWord", prompt: "2. It is a very large brass instrument with a low sound.", pictures: labelledPictures("i", ["a", "b", "c"]), points: 2, parts: [
-      { key: "picture", label: "Picture label", type: "pictureChoice", answers: ["c"], explanation: "Picture c shows the tuba." },
-      { key: "word", label: "Instrument", type: "input", answers: ["tuba"], explanation: "A tuba is a large brass instrument with a very low sound." }
-    ]},
-    { id: "I3", type: "pictureWord", prompt: "3. It is black, made of wood, and uses a reed.", pictures: labelledPictures("i", ["a", "b", "c"]), points: 2, parts: [
-      { key: "picture", label: "Picture label", type: "pictureChoice", answers: ["b"], explanation: "Picture b shows the clarinet." },
-      { key: "word", label: "Instrument", type: "input", answers: ["clarinet"], explanation: "A clarinet is usually black, is traditionally made of wood, and uses a single reed." }
-    ]}
-  ]},
-  { key: "J", label: "J", title: "Write the words in the correct order.", note: "Use every word to make a complete sentence.", points: 3, questions: [
-    input("J1", "1. not / the tuba / as big as / The clarinet / is", ["The clarinet is not as big as the tuba", "The clarinet is not as big as the tuba."], "Use subject + is not as + adjective + as + comparison noun."),
-    input("J2", "2. not as long as / The flute / the didgeridoo / is", ["The flute is not as long as the didgeridoo", "The flute is not as long as the didgeridoo."], "The complete comparison is The flute is not as long as the didgeridoo."),
-    input("J3", "3. as difficult as / The erhu / the violin / is", ["The erhu is as difficult as the violin", "The erhu is as difficult as the violin."], "Use as + adjective + as to show that the difficulty is equal.")
-  ]},
-  { key: "K", label: "K", title: "Look and complete the sentences.", note: "Use the best comparison phrase from the box. One phrase is not needed.", points: 4, wordBank: ["not as light as", "not as old as", "as big as", "as heavy as", "as tall as"], questions: [
-    input("K1", "1. The erhu is ___ I am!", ["as big as"], "The picture compares the size of the erhu with the child, so as big as is the best phrase.", IMG + "k-1.png"),
-    input("K2", "2. Frederick is ___ our music teacher.", ["as tall as"], "Frederick and the teacher are shown at the same height, so use as tall as.", IMG + "k-2.png"),
-    input("K3", "3. The cello is ___ the violin.", ["not as light as"], "A cello is heavier than a violin, so it is not as light as the violin.", IMG + "k-3.png"),
-    input("K4", "4. The drums are ___ the violin.", ["not as old as"], "The violin in the picture is older than the drums, so the drums are not as old as the violin.", IMG + "k-4.png")
-  ]},
-  { key: "L", label: "L", title: "Combine the sentences using as ... as or not as ... as.", note: "Write one complete comparison sentence without changing the meaning.", points: 3, questions: [
-    input("L1", "1. The violin is beautiful. The erhu is equally beautiful.", ["The violin is as beautiful as the erhu", "The violin is as beautiful as the erhu.", "The erhu is as beautiful as the violin", "The erhu is as beautiful as the violin."], "Both instruments are equally beautiful, so either subject order is correct with as beautiful as."),
-    input("L2", "2. This tuba is more expensive than this cello.", ["This cello is not as expensive as this tuba", "This cello is not as expensive as this tuba.", "This cello is not as expensive as the tuba", "This cello is not as expensive as the tuba."], "If the tuba is more expensive, the cello is not as expensive as the tuba."),
-    input("L3", "3. The panpipes are light. The flute is equally light.", ["The panpipes are as light as the flute", "The panpipes are as light as the flute.", "The flute is as light as the panpipes", "The flute is as light as the panpipes."], "Both instruments are equally light, so either subject order is correct with as light as.")
-  ]}
+  {
+    "key": "A",
+    "label": "A",
+    "title": "Match the sentences to the pictures.",
+    "note": "Choose the picture label that matches each sentence. The letters a-d are picture labels only.",
+    "points": 4,
+    "questions": [
+      {
+        "id": "A1",
+        "type": "pictureChoice",
+        "prompt": "1. The timpani is loud.",
+        "pictures": [
+          {
+            "value": "a",
+            "image": "assets/test-images/a-a.png"
+          },
+          {
+            "value": "b",
+            "image": "assets/test-images/a-b.png"
+          },
+          {
+            "value": "c",
+            "image": "assets/test-images/a-c.png"
+          },
+          {
+            "value": "d",
+            "image": "assets/test-images/a-d.png"
+          }
+        ],
+        "answers": [
+          "d"
+        ],
+        "explanation": "Picture d shows the timpani, a set of large orchestral drums.",
+        "points": 1
+      },
+      {
+        "id": "A2",
+        "type": "pictureChoice",
+        "prompt": "2. I want to play the bassoon.",
+        "pictures": [
+          {
+            "value": "a",
+            "image": "assets/test-images/a-a.png"
+          },
+          {
+            "value": "b",
+            "image": "assets/test-images/a-b.png"
+          },
+          {
+            "value": "c",
+            "image": "assets/test-images/a-c.png"
+          },
+          {
+            "value": "d",
+            "image": "assets/test-images/a-d.png"
+          }
+        ],
+        "answers": [
+          "c"
+        ],
+        "explanation": "Picture c shows the bassoon, a long woodwind instrument.",
+        "points": 1
+      },
+      {
+        "id": "A3",
+        "type": "pictureChoice",
+        "prompt": "3. I love the sound of the trombone.",
+        "pictures": [
+          {
+            "value": "a",
+            "image": "assets/test-images/a-a.png"
+          },
+          {
+            "value": "b",
+            "image": "assets/test-images/a-b.png"
+          },
+          {
+            "value": "c",
+            "image": "assets/test-images/a-c.png"
+          },
+          {
+            "value": "d",
+            "image": "assets/test-images/a-d.png"
+          }
+        ],
+        "answers": [
+          "b"
+        ],
+        "explanation": "Picture b shows the trombone with its long slide.",
+        "points": 1
+      },
+      {
+        "id": "A4",
+        "type": "pictureChoice",
+        "prompt": "4. He's holding a baton.",
+        "pictures": [
+          {
+            "value": "a",
+            "image": "assets/test-images/a-a.png"
+          },
+          {
+            "value": "b",
+            "image": "assets/test-images/a-b.png"
+          },
+          {
+            "value": "c",
+            "image": "assets/test-images/a-c.png"
+          },
+          {
+            "value": "d",
+            "image": "assets/test-images/a-d.png"
+          }
+        ],
+        "answers": [
+          "a"
+        ],
+        "explanation": "Picture a shows a conductor's baton.",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "key": "B",
+    "label": "B",
+    "title": "Complete the sentences.",
+    "note": "Write the word that completes each sentence.",
+    "points": 4,
+    "questions": [
+      {
+        "id": "B1",
+        "type": "input",
+        "prompt": "1. The ___ is a very large stringed instrument.",
+        "answers": [
+          "cello"
+        ],
+        "explanation": "Từ phù hợp với định nghĩa trong đề gốc là cello.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "B2",
+        "type": "input",
+        "prompt": "2. My sister wants to be an ___ when she grows up. She wants to go to the moon!",
+        "answers": [
+          "astronaut"
+        ],
+        "explanation": "Từ phù hợp với định nghĩa trong đề gốc là astronaut.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "B3",
+        "type": "input",
+        "prompt": "3. My brother is a ___. He studies biology and chemistry.",
+        "answers": [
+          "scientist"
+        ],
+        "explanation": "Từ phù hợp với định nghĩa trong đề gốc là scientist.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "B4",
+        "type": "input",
+        "prompt": "4. The ___ is a place in the school where students can play sports and exercise.",
+        "answers": [
+          "gym"
+        ],
+        "explanation": "Từ phù hợp với định nghĩa trong đề gốc là gym.",
+        "image": "",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "key": "C",
+    "label": "C",
+    "title": "Unscramble the words and match.",
+    "note": "Write each job, then choose its definition label. The letters a-c are definition labels only.",
+    "points": 6,
+    "wordBank": [
+      "a. the leader of a band or orchestra",
+      "b. a person who takes care of bees",
+      "c. a person who trains animals for shows"
+    ],
+    "questions": [
+      {
+        "id": "C1",
+        "type": "paired",
+        "prompt": "1. b e e r k e e p e",
+        "points": 2,
+        "parts": [
+          {
+            "key": "word",
+            "label": "Unscrambled word",
+            "type": "input",
+            "answers": [
+              "beekeeper",
+              "bee keeper"
+            ],
+            "explanation": "Beekeeper is the correct word."
+          },
+          {
+            "key": "match",
+            "label": "Definition label",
+            "type": "choice",
+            "options": [
+              "a",
+              "b",
+              "c"
+            ],
+            "answers": [
+              "b"
+            ],
+            "explanation": "A beekeeper takes care of bees, so the definition label is b."
+          }
+        ]
+      },
+      {
+        "id": "C2",
+        "type": "paired",
+        "prompt": "2. c c u s i r - t r n e r a i",
+        "points": 2,
+        "parts": [
+          {
+            "key": "word",
+            "label": "Unscrambled word",
+            "type": "input",
+            "answers": [
+              "circus trainer",
+              "circus-trainer"
+            ],
+            "explanation": "Circus trainer is the correct job expression."
+          },
+          {
+            "key": "match",
+            "label": "Definition label",
+            "type": "choice",
+            "options": [
+              "a",
+              "b",
+              "c"
+            ],
+            "answers": [
+              "c"
+            ],
+            "explanation": "A circus trainer trains animals for shows, so the definition label is c."
+          }
+        ]
+      },
+      {
+        "id": "C3",
+        "type": "paired",
+        "prompt": "3. c o n u c o r d t",
+        "points": 2,
+        "parts": [
+          {
+            "key": "word",
+            "label": "Unscrambled word",
+            "type": "input",
+            "answers": [
+              "conductor"
+            ],
+            "explanation": "Conductor is the correct word."
+          },
+          {
+            "key": "match",
+            "label": "Definition label",
+            "type": "choice",
+            "options": [
+              "a",
+              "b",
+              "c"
+            ],
+            "answers": [
+              "a"
+            ],
+            "explanation": "A conductor leads an orchestra or musical group, so the definition label is a."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "D",
+    "label": "D",
+    "title": "Listen. Then circle the correct answer.",
+    "note": "Listen carefully for the comparison in each sentence.",
+    "points": 4,
+    "audio": "assets/audio-d.mp3",
+    "questions": [
+      {
+        "id": "D1",
+        "type": "choice",
+        "prompt": "1.",
+        "options": [
+          "I prefer the orchestra.",
+          "I prefer the band."
+        ],
+        "answers": [
+          "I prefer the orchestra."
+        ],
+        "explanation": "The speaker says, “I prefer the orchestra.”",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "D2",
+        "type": "choice",
+        "prompt": "2.",
+        "options": [
+          "The cello is quieter.",
+          "The cello is louder."
+        ],
+        "answers": [
+          "The cello is quieter."
+        ],
+        "explanation": "The comparison in the recording is quieter.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "D3",
+        "type": "choice",
+        "prompt": "3.",
+        "options": [
+          "Lillian has the highest voice.",
+          "Lillian has the lowest voice."
+        ],
+        "answers": [
+          "Lillian has the highest voice."
+        ],
+        "explanation": "The recording says that no student has a higher voice than Lillian, so hers is the highest.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "D4",
+        "type": "choice",
+        "prompt": "4.",
+        "options": [
+          "Rachel thinks the trombone is harder.",
+          "Rachel thinks the trombone is easier."
+        ],
+        "answers": [
+          "Rachel thinks the trombone is harder."
+        ],
+        "explanation": "Rachel describes the trombone as the harder instrument.",
+        "image": "",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "key": "E",
+    "label": "E",
+    "title": "Look and write sentences.",
+    "note": "Dùng các từ gợi ý để viết câu đầy đủ với dạng so sánh phù hợp.",
+    "points": 3,
+    "questions": [
+      {
+        "id": "E1",
+        "type": "input",
+        "prompt": "1. Juan / tall / the conductor",
+        "answers": [
+          "Juan is taller than the conductor"
+        ],
+        "explanation": "Câu đầy đủ theo đề gốc: Juan is taller than the conductor.",
+        "image": "assets/test-images/e-1.png",
+        "points": 1
+      },
+      {
+        "id": "E2",
+        "type": "input",
+        "prompt": "2. Monica / short / person / in the orchestra",
+        "answers": [
+          "Monica is the shortest person in the orchestra"
+        ],
+        "explanation": "Câu đầy đủ theo đề gốc: Monica is the shortest person in the orchestra.",
+        "image": "assets/test-images/e-2.png",
+        "points": 1
+      },
+      {
+        "id": "E3",
+        "type": "input",
+        "prompt": "3. Ling / smart / student / in the class",
+        "answers": [
+          "Ling is the smartest student in the class"
+        ],
+        "explanation": "Câu đầy đủ theo đề gốc: Ling is the smartest student in the class.",
+        "image": "assets/test-images/e-3.png",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "key": "F",
+    "label": "F",
+    "title": "Complete the sentences.",
+    "note": "Use the correct comparative or superlative form of the word in parentheses.",
+    "points": 4,
+    "questions": [
+      {
+        "id": "F1",
+        "type": "input",
+        "prompt": "1. The cello is ___ the bassoon, and it's heavier, too.",
+        "answers": [
+          "bigger than"
+        ],
+        "explanation": "Điền bigger than theo ngữ cảnh và hộp từ của đề gốc.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "F2",
+        "type": "input",
+        "prompt": "2. Sophia is ___ singer I've ever heard. She has a beautiful voice.",
+        "answers": [
+          "the most amazing"
+        ],
+        "explanation": "Điền the most amazing theo ngữ cảnh và hộp từ của đề gốc.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "F3",
+        "type": "input",
+        "prompt": "3. The trumpet is ___ a fire engine! It's really loud.",
+        "answers": [
+          "louder than"
+        ],
+        "explanation": "Điền louder than theo ngữ cảnh và hộp từ của đề gốc.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "F4",
+        "type": "input",
+        "prompt": "4. A man's singing voice is usually ___ a woman's.",
+        "answers": [
+          "lower than"
+        ],
+        "explanation": "Điền lower than theo ngữ cảnh và hộp từ của đề gốc.",
+        "image": "",
+        "points": 1
+      }
+    ],
+    "wordBank": [
+      "louder than",
+      "lower than",
+      "bigger than",
+      "the easiest",
+      "the most amazing"
+    ]
+  },
+  {
+    "key": "G",
+    "label": "G",
+    "title": "Listen. Then circle True or False.",
+    "note": "Listen to each statement and decide whether it is true or false.",
+    "points": 4,
+    "audio": "assets/audio-g.mp3",
+    "questions": [
+      {
+        "id": "G1",
+        "type": "choice",
+        "prompt": "1.",
+        "options": [
+          "T",
+          "F"
+        ],
+        "answers": [
+          "F"
+        ],
+        "explanation": "Statement 1 is false according to the recording.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "G2",
+        "type": "choice",
+        "prompt": "2.",
+        "options": [
+          "T",
+          "F"
+        ],
+        "answers": [
+          "T"
+        ],
+        "explanation": "Statement 2 is true according to the recording.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "G3",
+        "type": "choice",
+        "prompt": "3.",
+        "options": [
+          "T",
+          "F"
+        ],
+        "answers": [
+          "F"
+        ],
+        "explanation": "Statement 3 is false according to the recording.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "G4",
+        "type": "choice",
+        "prompt": "4.",
+        "options": [
+          "T",
+          "F"
+        ],
+        "answers": [
+          "T"
+        ],
+        "explanation": "Statement 4 is true according to the recording.",
+        "image": "",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "key": "H",
+    "label": "H",
+    "title": "Complete the sentences.",
+    "note": "Write the music word that completes each meaning.",
+    "points": 5,
+    "questions": [
+      {
+        "id": "H1",
+        "type": "input",
+        "prompt": "1. I love to eat ___ food from my country.",
+        "answers": [
+          "traditional"
+        ],
+        "explanation": "Từ điền vào câu gốc là traditional.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "H2",
+        "type": "input",
+        "prompt": "2. These South American ___ are made of sugar cane.",
+        "answers": [
+          "panpipes"
+        ],
+        "explanation": "Từ điền vào câu gốc là panpipes.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "H3",
+        "type": "input",
+        "prompt": "3. The ___ is an African drum.",
+        "answers": [
+          "djembe"
+        ],
+        "explanation": "Từ điền vào câu gốc là djembe.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "H4",
+        "type": "input",
+        "prompt": "4. What ___ is this instrument made of?",
+        "answers": [
+          "material"
+        ],
+        "explanation": "Từ điền vào câu gốc là material.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "H5",
+        "type": "input",
+        "prompt": "5. The erhu makes music when its strings ___.",
+        "answers": [
+          "vibrate"
+        ],
+        "explanation": "Từ điền vào câu gốc là vibrate.",
+        "image": "",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "key": "I",
+    "label": "I",
+    "title": "Complete the sentences and match them to the pictures.",
+    "note": "Write an instrument, then choose its picture label. The letters a-c are picture labels only.",
+    "points": 6,
+    "questions": [
+      {
+        "id": "I1",
+        "type": "pictureWord",
+        "prompt": "1. The ___ is a woodwind instrument that you may hear in a band or orchestra.",
+        "pictures": [
+          {
+            "value": "a",
+            "image": "assets/test-images/i-a.png"
+          },
+          {
+            "value": "b",
+            "image": "assets/test-images/i-b.png"
+          },
+          {
+            "value": "c",
+            "image": "assets/test-images/i-c.png"
+          }
+        ],
+        "points": 2,
+        "parts": [
+          {
+            "key": "picture",
+            "label": "Picture label",
+            "type": "pictureChoice",
+            "answers": [
+              "a",
+              "b"
+            ],
+            "explanation": "The official answer is picture a for flute. A clarinet in picture b also fits the general description, so both are accepted when paired with the correct instrument word."
+          },
+          {
+            "key": "word",
+            "label": "Instrument",
+            "type": "input",
+            "answers": [
+              "flute",
+              "clarinet"
+            ],
+            "explanation": "The official answer is flute. Clarinet is also scientifically valid because it is a woodwind instrument that is played by blowing, so it is accepted too."
+          }
+        ],
+        "answerRelations": [
+          {
+            "picture": "a",
+            "word": "flute"
+          },
+          {
+            "picture": "b",
+            "word": "clarinet"
+          }
+        ]
+      },
+      {
+        "id": "I2",
+        "type": "pictureWord",
+        "prompt": "2. The ___ is a loud brass instrument that you hold in your lap to play.",
+        "pictures": [
+          {
+            "value": "a",
+            "image": "assets/test-images/i-a.png"
+          },
+          {
+            "value": "b",
+            "image": "assets/test-images/i-b.png"
+          },
+          {
+            "value": "c",
+            "image": "assets/test-images/i-c.png"
+          }
+        ],
+        "points": 2,
+        "parts": [
+          {
+            "key": "picture",
+            "label": "Picture label",
+            "type": "pictureChoice",
+            "answers": [
+              "c"
+            ],
+            "explanation": "Picture c shows the tuba."
+          },
+          {
+            "key": "word",
+            "label": "Instrument",
+            "type": "input",
+            "answers": [
+              "tuba"
+            ],
+            "explanation": "A tuba is a large brass instrument with a very low sound."
+          }
+        ]
+      },
+      {
+        "id": "I3",
+        "type": "pictureWord",
+        "prompt": "3. The ___ is a black woodwind instrument with a wooden reed at the end.",
+        "pictures": [
+          {
+            "value": "a",
+            "image": "assets/test-images/i-a.png"
+          },
+          {
+            "value": "b",
+            "image": "assets/test-images/i-b.png"
+          },
+          {
+            "value": "c",
+            "image": "assets/test-images/i-c.png"
+          }
+        ],
+        "points": 2,
+        "parts": [
+          {
+            "key": "picture",
+            "label": "Picture label",
+            "type": "pictureChoice",
+            "answers": [
+              "b"
+            ],
+            "explanation": "Picture b shows the clarinet."
+          },
+          {
+            "key": "word",
+            "label": "Instrument",
+            "type": "input",
+            "answers": [
+              "clarinet"
+            ],
+            "explanation": "A clarinet is usually black, is traditionally made of wood, and uses a single reed."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "J",
+    "label": "J",
+    "title": "Write the words in the correct order.",
+    "note": "Use every word to make a complete sentence.",
+    "points": 3,
+    "questions": [
+      {
+        "id": "J1",
+        "type": "input",
+        "prompt": "1. not / the tuba / as big as / The clarinet / is",
+        "answers": [
+          "The clarinet is not as big as the tuba",
+          "The clarinet is not as big as the tuba."
+        ],
+        "explanation": "Use subject + is not as + adjective + as + comparison noun.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "J2",
+        "type": "input",
+        "prompt": "2. not as long as / The flute / the didgeridoo / is",
+        "answers": [
+          "The flute is not as long as the didgeridoo",
+          "The flute is not as long as the didgeridoo."
+        ],
+        "explanation": "The complete comparison is The flute is not as long as the didgeridoo.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "J3",
+        "type": "input",
+        "prompt": "3. as difficult as / The erhu / the violin / is",
+        "answers": [
+          "The erhu is as difficult as the violin",
+          "The erhu is as difficult as the violin."
+        ],
+        "explanation": "Use as + adjective + as to show that the difficulty is equal.",
+        "image": "",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "key": "K",
+    "label": "K",
+    "title": "Look and complete the sentences.",
+    "note": "Use the best comparison phrase from the box. One phrase is not needed.",
+    "points": 4,
+    "wordBank": [
+      "not as light as",
+      "not as old as",
+      "as big as",
+      "as heavy as",
+      "as tall as"
+    ],
+    "questions": [
+      {
+        "id": "K1",
+        "type": "input",
+        "prompt": "1. The erhu is ___ I am!",
+        "answers": [
+          "as big as"
+        ],
+        "explanation": "The picture compares the size of the erhu with the child, so as big as is the best phrase.",
+        "image": "assets/test-images/k-1.png",
+        "points": 1
+      },
+      {
+        "id": "K2",
+        "type": "input",
+        "prompt": "2. Frederick is ___ our music teacher.",
+        "answers": [
+          "as tall as"
+        ],
+        "explanation": "Frederick and the teacher are shown at the same height, so use as tall as.",
+        "image": "assets/test-images/k-2.png",
+        "points": 1
+      },
+      {
+        "id": "K3",
+        "type": "input",
+        "prompt": "3. The cello is ___ the violin.",
+        "answers": [
+          "not as light as"
+        ],
+        "explanation": "A cello is heavier than a violin, so it is not as light as the violin.",
+        "image": "assets/test-images/k-3.png",
+        "points": 1
+      },
+      {
+        "id": "K4",
+        "type": "input",
+        "prompt": "4. The drums are ___ the violin.",
+        "answers": [
+          "not as old as"
+        ],
+        "explanation": "The violin in the picture is older than the drums, so the drums are not as old as the violin.",
+        "image": "assets/test-images/k-4.png",
+        "points": 1
+      }
+    ]
+  },
+  {
+    "key": "L",
+    "label": "L",
+    "title": "Combine the sentences using as ... as or not as ... as.",
+    "note": "Write one complete comparison sentence without changing the meaning.",
+    "points": 3,
+    "questions": [
+      {
+        "id": "L1",
+        "type": "input",
+        "prompt": "1. The violin is beautiful. The erhu is equally beautiful.",
+        "answers": [
+          "The violin is as beautiful as the erhu",
+          "The violin is as beautiful as the erhu.",
+          "The erhu is as beautiful as the violin",
+          "The erhu is as beautiful as the violin."
+        ],
+        "explanation": "Both instruments are equally beautiful, so either subject order is correct with as beautiful as.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "L2",
+        "type": "input",
+        "prompt": "2. This tuba is more expensive than this cello.",
+        "answers": [
+          "This cello is not as expensive as this tuba",
+          "This cello is not as expensive as this tuba.",
+          "This cello is not as expensive as the tuba",
+          "This cello is not as expensive as the tuba."
+        ],
+        "explanation": "If the tuba is more expensive, the cello is not as expensive as the tuba.",
+        "image": "",
+        "points": 1
+      },
+      {
+        "id": "L3",
+        "type": "input",
+        "prompt": "3. The panpipes are light. The flute is equally light.",
+        "answers": [
+          "The panpipes are as light as the flute",
+          "The panpipes are as light as the flute.",
+          "The flute is as light as the panpipes",
+          "The flute is as light as the panpipes."
+        ],
+        "explanation": "Both instruments are equally light, so either subject order is correct with as light as.",
+        "image": "",
+        "points": 1
+      }
+    ]
+  }
 ];
