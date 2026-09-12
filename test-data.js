@@ -304,7 +304,7 @@ const sections = [
         "prompt": "1.",
         "options": [
           "I prefer the orchestra.",
-          "I prefer the band."
+          "I prefer the circus."
         ],
         "answers": [
           "I prefer the orchestra."
@@ -319,7 +319,7 @@ const sections = [
         "prompt": "2.",
         "options": [
           "The cello is quieter.",
-          "The cello is louder."
+          "The trumpet is quieter."
         ],
         "answers": [
           "The cello is quieter."
@@ -333,11 +333,11 @@ const sections = [
         "type": "choice",
         "prompt": "3.",
         "options": [
-          "Lillian has the highest voice.",
-          "Lillian has the lowest voice."
+          "Some students have a higher voice than Lillian.",
+          "No student has a higher voice than Lillian."
         ],
         "answers": [
-          "Lillian has the highest voice."
+          "No student has a higher voice than Lillian."
         ],
         "explanation": "The recording says that no student has a higher voice than Lillian, so hers is the highest.",
         "image": "",
@@ -349,7 +349,7 @@ const sections = [
         "prompt": "4.",
         "options": [
           "Rachel thinks the trombone is harder.",
-          "Rachel thinks the trombone is easier."
+          "Rachel thinks the timpani is harder."
         ],
         "answers": [
           "Rachel thinks the trombone is harder."
@@ -406,7 +406,7 @@ const sections = [
     "key": "F",
     "label": "F",
     "title": "Complete the sentences.",
-    "note": "Use the correct comparative or superlative form of the word in parentheses.",
+    "note": "Choose the correct word or phrase from the box to complete each sentence.",
     "points": 4,
     "questions": [
       {
@@ -786,7 +786,7 @@ const sections = [
     "key": "K",
     "label": "K",
     "title": "Look and complete the sentences.",
-    "note": "Use the best comparison phrase from the box. One phrase is not needed.",
+    "note": "Use a comparison phrase from the box that matches each picture.",
     "points": 4,
     "wordBank": [
       "not as light as",
@@ -801,9 +801,10 @@ const sections = [
         "type": "input",
         "prompt": "1. The erhu is ___ I am!",
         "answers": [
-          "as big as"
+          "as big as",
+          "as tall as"
         ],
-        "explanation": "The picture compares the size of the erhu with the child, so as big as is the best phrase.",
+        "explanation": "The picture supports as big as or as tall as. The original answer key allows these comparison phrases to be interchanged when they match the picture.",
         "image": "assets/test-images/k-1.png",
         "points": 1
       },
@@ -812,9 +813,10 @@ const sections = [
         "type": "input",
         "prompt": "2. Frederick is ___ our music teacher.",
         "answers": [
-          "as tall as"
+          "as tall as",
+          "as big as"
         ],
-        "explanation": "Frederick and the teacher are shown at the same height, so use as tall as.",
+        "explanation": "The picture supports as tall as or as big as. The original answer key allows these comparison phrases to be interchanged when they match the picture.",
         "image": "assets/test-images/k-2.png",
         "points": 1
       },
